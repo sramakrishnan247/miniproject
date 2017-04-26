@@ -1,13 +1,14 @@
-{% extends 'base.html' %}
-
-{% block links%}
+<!DOCTYPE html>
+<html>
+<head>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="/static/css/home.css"
-{% endblock%}
+<link rel="stylesheet" type="text/css" href="/static/css/home.css">
+<!-- <script type="text/javascript" src="/static/js/home.js"></script> -->
+	<title></title>
+</head>
+<body>
+<h1>hello</h1>
 
-{% block content %}
-  <h2>Welcome, {{ user.get_full_name }} <small>{{ user.username }}</small>!</h2>
-  <!-- <p>Your birth date: {{ user.profile.birth_date }}</p> -->
 <!-- 
   <a href="carowner">Car Owner</a>
   <a href="landowner">Land Owner</a>
@@ -17,5 +18,62 @@
   <li><a href="security" class="round green">Security Guard<span class="round">For security guards of parking Lots</span></a></li>
   <li><a href="carowner" class="round red">Car Owner<span class="round">For car owners who want to search for parking lots </span></a></li>
 	<li><a href="landowner"class="round yellow">Land Owner<span class="round">For those who want to rent their land</span></a></li>
-</ul> 
-{% endblock %}
+</ul> 	
+<div class="country-wrap">
+
+	<!--<div class="mountain-1"></div>
+	<div class="mountain-2"></div>-->
+	
+	<div class="sun"></div>
+	<div class="grass"></div>
+	<div class="street">
+		<div class="car">
+		<!--<div class="car-base"></div>-->
+		<div class="car-body">
+			<div class="car-top-back">
+				<div class="back-curve"></div>
+			</div>
+			<div class="car-gate"></div>
+			<div class="car-top-front">
+				<div class="wind-sheild"></div>
+			</div>
+			<div class="bonet-front"></div>
+			<div class="stepney"></div>
+		</div>
+		<div class="boundary-tyre-cover">
+			<div class="boundary-tyre-cover-back-bottom"></div>
+			<div class="boundary-tyre-cover-inner"></div>	
+		</div>
+		<div class="tyre-cover-front">
+			<div class="boundary-tyre-cover-inner-front"></div>
+		</div>
+		<div class="base-axcel">
+			
+		</div>
+		<div class="front-bumper"></div>
+		<div class="tyre">		
+			<div class="gap"></div>	
+		</div>
+		<div class="tyre front">
+			<div class="gap"></div>	
+		</div>
+		<div class="car-shadow"></div>
+	</div>
+	</div>
+	<div class="street-stripe"></div>
+	<div class="hill">
+		<!--<div class="tree-1">
+			<div class="branch-1"></div>
+			<div class="branch-2"></div>
+			<div class="branch-3"></div>
+		</div>
+		<div class="tree-1">
+		<div class="branch"></div>
+		<div class="trunk"></div>
+	</div>-->
+	</div>
+	
+</div>
+</body>
+</html>
+

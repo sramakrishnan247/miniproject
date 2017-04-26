@@ -1,11 +1,23 @@
 {% extends 'base.html' %}
 
+{% block links %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="/static/css/login_carowner.css">
+<script type="text/javascript" src="/static/js/login_carowner.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>
+
+{% endblock  %}
 {% block content %}
-  <h2>Log in to My Site</h2>
   {% if form.errors %}
     <p style="color: red">Your username and password didn't match. Please try again.</p>
   {% endif %}
-  <form method="post">
+<div class="login container">
+  <div class="login-header">
+    <h1>CarOwner Login</h1>
+  </div>
+  <div class="login-form">
+  <form method="post" >
     {% csrf_token %}
     <input type="hidden" name="next" value="{{ next }}" />
     {% for field in form %}
@@ -13,14 +25,22 @@
         {{ field.label_tag }}<br>
         {{ field }}<br>
         {% for error in field.errors %}
-          <p style="color: red">{{ error }}</p>
+        <p style="color: red">{{ error }}</p>
         {% endfor %}
         {% if field.help_text %}
           <p><small style="color: grey">{{ field.help_text }}</small></p>
         {% endif %}
       </p>
     {% endfor %}
-    <button type="submit">Log in</button>
+    <button type="submit" class="btn btn-large">Login</button>
+    <br>
+    <br>
     <a href="/carowner/signup">New to My Site? Sign up</a>
   </form>
+  </div>
+</div>
+<div class="error-page">
+  <div class="try-again">Error: Try again?</div>
+</div>
+
 {% endblock %}
