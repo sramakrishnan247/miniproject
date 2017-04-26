@@ -1,10 +1,119 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Orange-Minimalist Template</title>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
-{% block content %}
-  <h2>Welcome, {{ user.get_full_name }} <small>{{ user.username }}</small>!</h2>
+  
+      <style>
+      /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
+      html, body {
+  font-family: 'Open Sans', sans-serif;
+  text-align: justify;
+}
+#left-side {
+  width: 19%;
+  height: 100%;
+  float: left;
+  /*border: 1px solid black;*/
+}
+
+#right-side {
+  width: 80%;
+  margin-top: 30px;
+  border: 1px solid #fff;
+  overflow: hidden;
+  box-shadow: inset 0 0 10px #888;
+  border-left: 5px solid orange;
+}
+
+article {
+  margin: 10px 30px;
+  /*border: 1px solid black;*/
+}
+
+h1 {
+  padding-left: 10px;
+  font-family: 'Open Sans', sans-serif;
+  color: #494949;
+}
+
+p.title-dsc {
+  padding-left: 10px;
+}
+
+h2 {
+  border-left: 6px solid orange;
+  padding-left: 10px;
+  color: #494949;
+}
+
+p {
+  font-size: 12px;
+}
+
+ul {
+  list-style-type:square;
+  font-size: 13px;
+}
+
+ul p {
+  line-height: 0px;
+}
+
+@media screen and (max-width: 640px) {
+  #left-side {
+    float: none;
+    width: 100%;
+    text-align: center;
+  }
+  
+  #right-side {
+    width:98%;
+    
+  }
+}
+    </style>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+</head>
+
+<body>
+  <div id="left-side">
+    <h1>Welcome, {{ user.get_full_name }} <small>{{ user.username }}</small>!</h1>
   <!-- <p>Your birth date: {{ user.profile.birth_date }}</p> -->
-<p>Carowner page</p>
 <p>{{carowner}}</p>
 <a href="/carowner/search">Search</a>
 
-{% endblock %}
+  <p class="title-dsc">Instead of "Hello, world"?</p>  
+</div>
+<div id="right-side">
+  <article>
+  </article>
+  <article>
+  <h2>Overview</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </article>
+  <article>
+    <h2>Usage</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <ul>
+      <li>Step number 1<p>Lorem ipsum dolor sit amet, consectetur</p></li>
+        <li>Step number 2<p>Lorem ipsum dolor sit amet, consectetur</p></li>
+        <li>Step number 3<p>Lorem ipsum dolor sit amet, consectetur</p></li>
+        <li>Step number 4<p>Lorem ipsum dolor sit amet, consectetur</p></li>
+        <li>Step number 5<p>Lorem ipsum dolor sit amet, consectetur</p></li>
+    </ul>
+  </article>
+  <article>
+    <h2>Examples</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  </article>
+</div>
+  
+  
+</body>
+</html>
