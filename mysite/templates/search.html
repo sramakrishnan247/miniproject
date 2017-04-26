@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block links%}	
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+  <script>
+  // Shorthand for $(document).ready();
+  $(function() {
+   $('#placeform').submit(function(){
+     var place = $('#places').val();
+     $(this).attr('action',"/carowner/search/place/"+place+"/");
+   });
+  });
+ </script>
+ <script>
+  // Shorthand for $(document).ready();
+  $(function() {
+   $('#pinform').submit(function(){
+     var pincode = $('#pincode').val();
+     $(this).attr('action',"/carowner/search/location/"+pincode+"/");
+   });
+  });
+ </script>
+{% endblock %}
+{% block content %}
+
+<form action='' name='placeform' id="placeform" method="POST">
+{% csrf_token %} 
+  <input type='text' name='places' id="places">
+  <button action='submit'>Search</button>
+</form>
+
+<form action='' name='pinform' id="pinform" method="POST">
+{% csrf_token %} 
+  <input type='text' name='pincode' id="pincode">
+  <button action='submit'>Search</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{vacancy}}</h1>
+<a href="{% url 'security_vacate' %}">Vacate</a>
+<a href="{% url 'security_vacate' %}">Book</a>
+{% endblock %}

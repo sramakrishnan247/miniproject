@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block links%}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="/static/css/home.css"
+{% endblock%}
+
+{% block content %}
+  <h2>Welcome, {{ user.get_full_name }} <small>{{ user.username }}</small>!</h2>
+  <!-- <p>Your birth date: {{ user.profile.birth_date }}</p> -->
+<!-- 
+  <a href="carowner">Car Owner</a>
+  <a href="landowner">Land Owner</a>
+  <a href="security">Security</a>
+ -->
+  <ul>
+  <li><a href="security" class="round green">Security Guard<span class="round">For security guards of parking Lots</span></a></li>
+  <li><a href="carowner" class="round red">Car Owner<span class="round">For car owners who want to search for parking lots </span></a></li>
+	<li><a href="landowner"class="round yellow">Land Owner<span class="round">For those who want to rent their land</span></a></li>
+</ul> 
+{% endblock %}
