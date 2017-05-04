@@ -1,5 +1,11 @@
-appdirs==1.4.0
+appdirs==1.4.2
 Django==1.10.5
+instamojo-wrapper==1.1
+olefile==0.44
 packaging==16.8
+Pillow==4.0.0
+psycopg2==2.7.1
+pygame==1.9.3
 pyparsing==2.1.10
+requests==2.13.0
 six==1.10.0
