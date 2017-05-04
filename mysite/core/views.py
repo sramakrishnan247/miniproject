@@ -84,7 +84,7 @@ def search_place(request,place_name):
         z = LandOwner.objects.all().get(placename=place_name)
         p = Place.objects.all().get(placename=z)
         p.vacancy=p.vacancy+1
-        z.earnings=z.earnings+30
+        z.earnings=z.earnings+30.0
         z.save()
         p.save()
         print(z.user)
@@ -129,7 +129,7 @@ def search_location(request,pin_code):
     z = LandOwner.objects.all().get(pincode=p[closest])
     pp = Place.objects.all().get(placename=z)
     pp.vacancy=pp.vacancy-1
-    z.earnings=z.earnings+30
+    z.earnings=z.earnings+30.0
     z.save()
     pp.save()
     print(pp)

@@ -13,7 +13,7 @@ class LandOwner(models.Model):
     pincode = models.IntegerField(blank=False)
     email = models.EmailField(max_length=50,blank=True)
     placename = models.CharField(max_length=40, blank=True)
-    earnings = models.FloatField(blank=True, null=True)
+    earnings = models.FloatField(blank=True, default=0)
     def __str__(self):
     	return str(self.user)
 
