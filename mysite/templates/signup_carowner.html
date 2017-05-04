@@ -1,15 +1,25 @@
 {% extends 'base.html' %}
+{% block links %}
+<style type="text/css">
+ body{ background:url('/static/loginparking.jpg');
+  background-size: 100% 127%;
+}
+</style>
+{% endblock %}
+
 
 {% block content %}
-  <h2>Sign up</h2>
-  <form method="post">
+  <div class="container" style="width:800px; margin:0 auto;background-color:transparent !important;">
+  <h2>Sign Up</h2>
+
+    <form method="post">
     {% csrf_token %}
     {% for field in form %}
       <p>
         {{ field.label_tag }}<br>
         {{ field }}
         {% if field.help_text %}
-          <small style="color: grey">{{ field.help_text }}</small>
+          <small style="color: black \">{{ field.help_text }}</small>
         {% endif %}
         {% for error in field.errors %}
           <p style="color: red">{{ error }}</p>
@@ -18,4 +28,7 @@
     {% endfor %}
     <button type="submit">Sign up</button>
   </form>
+    
+  </div>
+
 {% endblock %}

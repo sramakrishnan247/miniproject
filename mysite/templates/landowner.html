@@ -1,7 +1,83 @@
-{% extends 'base.html' %}
+	<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>LandOwner Page</title>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/static/css/carowner.css">
 
-{% block content %}
-  <h2>Welcome, {{ user.get_full_name }} <small>{{ user.username }}</small>!</h2>
-  <!-- <p>Your birth date: {{ user.profile.birth_date }}</p> -->
-<p>Landowner page</p>
-{% endblock %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+</head>
+
+<body>
+<div class="container">
+
+<div class="jumbotron" style="background-color:transparent !important;">
+<a  class="btn btn-danger pull-right" href="{% url 'logout' %}">logout</a>
+  <h1>Hello, {{user.username}}!</</h1>
+  <p>Hope you're having a great day!</p>
+  <p>Earnings: <strong>{{landowner.earnings}}</strong></p>
+</div>
+</div>
+
+  
+<div class="country-wrap">
+
+	<!--<div class="mountain-1"></div>
+	<div class="mountain-2"></div>-->
+	
+	<div class="sun"></div>
+	<div class="grass"></div>
+	<div class="street">
+		<div class="car">
+		<!--<div class="car-base"></div>-->
+		<div class="car-body">
+			<div class="car-top-back">
+				<div class="back-curve"></div>
+			</div>
+			<div class="car-gate"></div>
+			<div class="car-top-front">
+				<div class="wind-sheild"></div>
+			</div>
+			<div class="bonet-front"></div>
+			<div class="stepney"></div>
+		</div>
+		<div class="boundary-tyre-cover">
+			<div class="boundary-tyre-cover-back-bottom"></div>
+			<div class="boundary-tyre-cover-inner"></div>	
+		</div>
+		<div class="tyre-cover-front">
+			<div class="boundary-tyre-cover-inner-front"></div>
+		</div>
+		<div class="base-axcel">
+			
+		</div>
+		<div class="front-bumper"></div>
+		<div class="tyre">		
+			<div class="gap"></div>	
+		</div>
+		<div class="tyre front">
+			<div class="gap"></div>	
+		</div>
+		<div class="car-shadow"></div>
+	</div>
+	</div>
+	<div class="street-stripe"></div>
+	<div class="hill">
+		<!--<div class="tree-1">
+			<div class="branch-1"></div>
+			<div class="branch-2"></div>
+			<div class="branch-3"></div>
+		</div>
+		<div class="tree-1">
+		<div class="branch"></div>
+		<div class="trunk"></div>
+	</div>-->
+	</div>
+	
+</div>
+</body>
+</html>

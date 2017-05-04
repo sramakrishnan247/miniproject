@@ -83,9 +83,13 @@ def search_place(request,place_name):
     try:
         z = LandOwner.objects.all().get(placename=place_name)
         p = Place.objects.all().get(placename=z)
+        p.vacancy=p.vacancy+1
+        z.earnings=z.earnings+30
+        z.save()
+        p.save()
         print(z.user)
         print(p.placename.placename)
-        return render(request,'search_place.html',)
+        return render(request,'search_place.html',{'landowner':z,'place':p})
     except:     
         return HttpResponse('<h1>This place does not exist</h1>')      
 
@@ -113,15 +117,23 @@ def search_location(request,pin_code):
     city = responseip['city']
     responsedata = requests.get("http://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=e81aa24b21cefcb8f32a709177a63342")
     responsedata=responsedata.json()
-    print(responsedata)
-    print(responsedata['coord']['lat'])
-    print(responsedata['coord']['lon'])
+    # print(responsedata)
+    # print(responsedata['coord']['lat'])
+    # print(responsedata['coord']['lon'])
     lon = responsedata['coord']['lon']
     lat = responsedata['coord']['lat']
     # l = [(35.9879845760485, -4.74093235801354), (35.9888687992442, -4.72708076713794), (35.9889733432982, -4.72758983150694), (35.9915751019521, -4.72772881198689), (35.9935223025608, -4.72814213543564), (35.9941433944962, -4.72867416528065), (35.9946670576458, -4.72915181755908), (35.995946587966, -4.73005565674077), (35.9961479762973, -4.7306870912609), (35.9963563641681, -4.7313535758683), (35.9968685892892, -4.73182757975504), (35.9976738530666, -4.73194429867996) ]
     coord = (lat,lon)
     closest=(takeClosest(p,int(pin_code)))
     print(p[closest])
+    z = LandOwner.objects.all().get(pincode=p[closest])
+    pp = Place.objects.all().get(placename=z)
+    pp.vacancy=pp.vacancy-1
+    z.earnings=z.earnings+30
+    z.save()
+    pp.save()
+    print(pp)
+    print(z)
     # print (find(l, coord))
     # x,y = find(l,coord)
     # nearest = LandOwner.objects.all().get(lat=x,lon=y)                    
@@ -130,7 +142,7 @@ def search_location(request,pin_code):
     # print("Temperature: "+str(responsedata['main']['temp']-273)+"C")
     # print("Humidity: "+str(responsedata['main']['humidity']))
     # vals ={'lat':lat,'lon':lon,'nearest':nearest}
-    return render(request,'search_location.html',)
+    return render(request,'search_location.html',{'place':pp,'landowner':z})
                         
 @login_required(login_url='/security/login/')
 def security(request):
@@ -140,7 +152,7 @@ def security(request):
     return render(request,'security.html',{'vacancy':p.vacancy})
 
 @login_required(login_url='/security/login/')
-def security_vacate(request):
+def security_book(request):
     x=LandOwner.objects.all().get(user=request.user)
     p=Place.objects.all().get(placename=x)
     p.vacancy=p.vacancy-1
@@ -148,7 +160,7 @@ def security_vacate(request):
     return redirect('security')
                         
 @login_required(login_url='/security/login/')
-def security_book(request):
+def security_vacate(request):
     x=LandOwner.objects.all().get(user=request.user)
     p=Place.objects.all().get(placename=x)
     p.vacancy=p.vacancy+1

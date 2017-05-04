@@ -1,18 +1,23 @@
 {% extends 'base.html' %}
 
 {% block links %}
+<title>Login</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="/static/css/login_carowner.css">
 <script type="text/javascript" src="/static/js/login_carowner.js"></script>
 <link href='http://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>
-
+<style type="text/css">
+ body{ background:url('/static/loginparking.jpg');
+  background-size: 100% 127%;
+}
+</style>
 {% endblock  %}
 {% block content %}
   {% if form.errors %}
     <p style="color: red">Your username and password didn't match. Please try again.</p>
   {% endif %}
-<div class="login container">
+<div class="login container" style="background-color:transparent !important;">
   <div class="login-header">
     <h1>CarOwner Login</h1>
   </div>
@@ -36,11 +41,10 @@
     <br>
     <br>
     <a href="/carowner/signup">New to My Site? Sign up</a>
+    <br>
+    <a href="../../">Not a CarOwner?</a>
   </form>
   </div>
-</div>
-<div class="error-page">
-  <div class="try-again">Error: Try again?</div>
 </div>
 
 {% endblock %}

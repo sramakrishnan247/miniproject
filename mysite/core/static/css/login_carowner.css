@@ -1,5 +1,5 @@
 body {
-  background:url('http://cdn.wallpapersafari.com/13/6/Mpsg2b.jpg');
+  /*background:url('https://static.pexels.com/photos/279734/pexels-photo-279734.jpeg');*/
   margin:0px;
   font-family: 'Ubuntu', sans-serif;
   background-size: 100% 110%;
@@ -12,7 +12,7 @@ h1, h2, h3, h4, h5, h6, a {
   max-width:500px;
 }
 .login-header {
-  color:#fff;
+  /*color:#fff;*/ 
   text-align:center;
   font-size:300%;
 }

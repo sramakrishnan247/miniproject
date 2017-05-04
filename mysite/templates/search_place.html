@@ -1,11 +1,36 @@
 
 {% extends 'base.html' %}
 
+{% block links %}
+
+<style type="text/css">
+	body{ 
+			background:url('/static/paymentpic.jpg');
+  			background-size: 100% 160%;
+  		}
+</style>
+{% endblock %}
+
+
 {% block content %}
-<h1>Instructions</h1>
-<p>Press the checkout button to book your parking slot and show the Payment id at the security counter.</p>
-<p>Payment details have also been sent as a message to your mobile phone</p>
-<a href="https://www.instamojo.com/@sramakrishnan247/l66a71b4b9d9b4ebaae53af77cc5333da/" rel="im-checkout" data-behaviour="remote" data-style="flat" data-text="Checkout"></a>
-<script src="https://d2xwmjc4uy2hr5.cloudfront.net/im-embed/im-embed.min.js"></script>
+<div class="container">
+	<h1>Instructions</h1>
+	<p>Do you want to prebook a parking slot at the <strong>{{ landowner.placename }}</strong> ?</p>
+	<p>Press the checkout button to book your parking slot and show the Payment id at the security counter.</p>
+	<p>Payment details have also been sent as a message to your mobile phone</p>
+	
+	<a href="https://www.instamojo.com/@sramakrishnan247/l66a71b4b9d9b4ebaae53af77cc5333da/" rel="im-checkout" data-behaviour="remote" data-style="flat" data-text="Checkout"></a>
+	
+	<script src="https://d2xwmjc4uy2hr5.cloudfront.net/im-embed/im-embed.min.js"></script>
+
+	<h3>Parking Lot details:</h3>
+	<p>Pincode:{{ landowner.pincode }}</p>
+	<p>Latitude:{{ landowner.lat }}</p>
+	<p>Longitude:{{ landowner.lon }}</p>
+	<p>Name:{{ landowner.placename }}</p>
+
+</div>
+
+
 {% endblock %}
 
