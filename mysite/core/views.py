@@ -100,30 +100,33 @@ def dist_sq(a, b): # distance squared (don't need the square root)
         return (a[0] - b[0])**2 + (a[1] - b[1])**2
 
 def takeClosest(myList, myNumber):
-  closest = myList[0]
-  for i in range(1, len(myList)):
-    if abs(i - myNumber) < closest:
-      closest = i
-  return closest
+    closest = 9999
+    ans = 0
+    for i in range(1,len(myList)):
+        if(abs(myList[i]-myNumber)<closest):
+            ans = i
+            closest=myList[i]-myNumber
+    return ans        
 
 @login_required(login_url='/carowner/login/')
-def search_location(request,pin_code):           
+def search_location(request,pin_code):          
+    print(pin_code) 
     l = [(e.lat,e.lon) if e.lat is not None else (0,0) for e in LandOwner.objects.all() ]
     p = [e.pincode if Place.objects.all().get(placename=e).vacancy !=0 else 0 for e in LandOwner.objects.all()]
-    print(l)
+    # print(l)
     print(p)
-    responseip=requests.get('http://ipinfo.io/')
-    responseip=responseip.json()
-    city = responseip['city']
-    responsedata = requests.get("http://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=e81aa24b21cefcb8f32a709177a63342")
-    responsedata=responsedata.json()
-    # print(responsedata)
-    # print(responsedata['coord']['lat'])
-    # print(responsedata['coord']['lon'])
-    lon = responsedata['coord']['lon']
-    lat = responsedata['coord']['lat']
+    # responseip=requests.get('http://ipinfo.io/')
+    # responseip=responseip.json()
+    # city = responseip['city']
+    # responsedata = requests.get("http://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=e81aa24b21cefcb8f32a709177a63342")
+    # responsedata=responsedata.json()
+    # # print(responsedata)
+    # # print(responsedata['coord']['lat'])
+    # # print(responsedata['coord']['lon'])
+    # lon = responsedata['coord']['lon']
+    # lat = responsedata['coord']['lat']
     # l = [(35.9879845760485, -4.74093235801354), (35.9888687992442, -4.72708076713794), (35.9889733432982, -4.72758983150694), (35.9915751019521, -4.72772881198689), (35.9935223025608, -4.72814213543564), (35.9941433944962, -4.72867416528065), (35.9946670576458, -4.72915181755908), (35.995946587966, -4.73005565674077), (35.9961479762973, -4.7306870912609), (35.9963563641681, -4.7313535758683), (35.9968685892892, -4.73182757975504), (35.9976738530666, -4.73194429867996) ]
-    coord = (lat,lon)
+    # coord = (lat,lon)
     closest=(takeClosest(p,int(pin_code)))
     print(p[closest])
     z = LandOwner.objects.all().get(pincode=p[closest])
