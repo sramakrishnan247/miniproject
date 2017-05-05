@@ -78,20 +78,23 @@ def landowner(request):
 def search(request):
     return render(request,'search.html')
             
-@login_required(login_url='/carowner/login/')
-def search_place(request,place_name):
-    try:
-        z = LandOwner.objects.all().get(placename=place_name)
-        p = Place.objects.all().get(placename=z)
-        p.vacancy=p.vacancy+1
-        z.earnings=z.earnings+30.0
-        z.save()
-        p.save()
-        print(z.user)
-        print(p.placename.placename)
-        return render(request,'search_place.html',{'landowner':z,'place':p})
-    except:     
-        return HttpResponse('<h1>This place does not exist</h1>')      
+# @login_required(login_url='/carowner/login/')
+# def search_place(request,place_name):
+#     # try:
+#         z = LandOwner.objects.all().get(placename=place_name)
+#         p = Place.objects.all().get(placename=z)
+#         # alpha = p.vacancy
+#         print(z)
+#         print(p)
+#         # p.vacancy=p.vacancy+1
+#         z.earnings=z.earnings+30.0
+#         z.save()
+#         p.save()
+#         print(z.user)
+#         print(p.placename.placename)
+#         return render(request,'search_place.html',{'landowner':z,'place':p,})
+#     # except:     
+#     #     return HttpResponse('<h1>This place does not exist</h1>')      
 
 def find(l, coord):
   return min(l, key=lambda p:dist_sq(coord, p))
@@ -131,6 +134,7 @@ def search_location(request,pin_code):
     print(p[closest])
     z = LandOwner.objects.all().get(pincode=p[closest])
     pp = Place.objects.all().get(placename=z)
+    alpha = pp.vacancy
     pp.vacancy=pp.vacancy-1
     z.earnings=z.earnings+30.0
     z.save()
@@ -145,8 +149,23 @@ def search_location(request,pin_code):
     # print("Temperature: "+str(responsedata['main']['temp']-273)+"C")
     # print("Humidity: "+str(responsedata['main']['humidity']))
     # vals ={'lat':lat,'lon':lon,'nearest':nearest}
-    return render(request,'search_location.html',{'place':pp,'landowner':z})
-                        
+    return render(request,'search_location.html',{'place':pp,'landowner':z,'alpha':alpha})
+ 
+@login_required(login_url='/carowner/login/')
+def search_place(request,place_name):          
+    try:    
+        print(place_name)
+        z = LandOwner.objects.all().get(placename=place_name)
+        pp = Place.objects.all().get(placename=z)
+        alpha = pp.vacancy
+        pp.vacancy=pp.vacancy-1
+        z.earnings=z.earnings+30.0
+        z.save()
+        pp.save()
+        return render(request,'search_place.html',{'place':pp,'landowner':z,'alpha':alpha})
+    except:
+        return HttpResponse('<h1>This Place Does Not Exist</h1>')
+
 @login_required(login_url='/security/login/')
 def security(request):
     x=LandOwner.objects.all().get(user=request.user)
